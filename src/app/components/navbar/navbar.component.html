@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid px-5">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <div class="w-25">
+      <select [(ngModel)]="selectedItem" (ngModelChange)="onSelectionChange()" class=" form-select"
+        aria-label="Default select example">
+        <option selected>Select User</option>
+        <option *ngFor="let user of users" [value]=user.id>{{user.name}}</option>
+      </select>
+    </div>
+  </div>
+</nav>

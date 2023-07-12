@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from 'src/app/interfaces/post.interface';
 import { User } from 'src/app/interfaces/user.interface';
+import { ImageService } from 'src/app/services/image.service';
 import { PostService } from 'src/app/services/post.service';
 @Component({
   selector: 'app-posts',
@@ -24,15 +25,24 @@ export class PostsComponent implements OnInit {
     'https://images.unsplash.com/photo-1502472584811-0a2f2feb8968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=400&q=60',
     'https://images.unsplash.com/photo-1515984977862-1c7201ef324d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE3fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=400&q=60',
   ];
+  shuffleArray(array: string[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+  constructor(
+    private postService: PostService,
+    private imageService: ImageService
+  ) {}
 
-  constructor(private postService: PostService) {}
   ngOnInit() {
     this.postService.posts$.subscribe((response: any) => {
       this.isLoading = response.loading;
       this.posts = response.posts;
       this.error = response.error;
-      console.log(response);
-      console.log(this.users, 'from posts');
     });
+    this.imageService.dataSubject.subscribe((data) => (this.images = data));
   }
 }

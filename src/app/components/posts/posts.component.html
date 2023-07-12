@@ -1,6 +1,6 @@
 <div *ngIf="isLoading"><app-loading></app-loading></div>
 <div class="card-container" *ngIf="(!isLoading) && (posts.length<1) ">
-  <h1>Please Select user</h1>
+  <h1 class="mt-">Please Select user</h1>
 </div>
 <div class="card-container">
   <div *ngFor="let post of posts; let i = index">
@@ -8,7 +8,9 @@
       <img src={{images[i]}} class="card-img-top img" alt="...">
       <div class="card-body">
         <div class="title" *ngIf="posts.length>1">
-          <img src={{images[0]}} class=" profileImg" alt="...">
+          <img
+            src="https://media.istockphoto.com/id/1138920571/photo/portrait-of-modern-man-with-wireless-earbuds.jpg?s=612x612&w=0&k=20&c=g7mAKxy2X2Qkj9vtgQeYwOr3LHVBPdxwdylDgCO3sfQ="
+            class=" profileImg" alt="...">
           <h5 class="userName mt-1 ">{{users[post.userId-1].name}}</h5>
         </div>
 

@@ -1,12 +1,21 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid px-5">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <div class="w-25">
-      <select [(ngModel)]="selectedItem" (ngModelChange)="onSelectionChange()" class=" form-select"
-        aria-label="Default select example">
-        <option selected>Select User</option>
-        <option *ngFor="let user of users" [value]=user.id>{{user.name}}</option>
-      </select>
+<nav class="navbar navbar-expand-lg ">
+  <div class="nav px-2 px-lg-5">
+    <div class="d-flex gap-2">
+      <img src="../../../assets/Medico_Logo-transformed.png" alt="" width="40" height="40">
+      <a class="brand fw-lg-bold">Natural Horizons</a>
+    </div>
+
+    <div class=" d-flex gap-3">
+      <div class="text-danger" *ngIf="error; else select ">{{error}}</div>
+      <ng-template #select>
+        <select [(ngModel)]="selectedUser" (ngModelChange)="onSelectionChange()" class="form-select"
+          aria-label="Default select example">
+          <option selected>Select User</option>
+          <option *ngIf="isLoading">Loading...</option>
+          <option *ngFor="let user of users" [value]=user.id>{{user.name}}</option>
+        </select>
+        <img *ngIf="+selectedUser>0" src={{image}} class="nav-profile" alt="...">
+      </ng-template>
     </div>
   </div>
 </nav>

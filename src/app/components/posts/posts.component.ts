@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Post } from 'src/app/interfaces/post.interface';
+import { User } from 'src/app/interfaces/user.interface';
 import { PostService } from 'src/app/services/post.service';
 @Component({
   selector: 'app-posts',
@@ -7,7 +8,10 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./posts.component.scss'],
 })
 export class PostsComponent implements OnInit {
+  @Input() users: User[] = [];
   posts: Post[] = [];
+  isLoading: boolean = false;
+  error: string = '';
   images: string[] = [
     'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80',
     'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
@@ -23,14 +27,12 @@ export class PostsComponent implements OnInit {
 
   constructor(private postService: PostService) {}
   ngOnInit() {
-    this.postService.posts$.subscribe((data: any) => {
-      this.posts = data;
-      console.log(data);
+    this.postService.posts$.subscribe((response: any) => {
+      this.isLoading = response.loading;
+      this.posts = response.posts;
+      this.error = response.error;
+      console.log(response);
+      console.log(this.users, 'from posts');
     });
-  }
-
-  fetchImage() {
-    // return 'https://source.unsplash.com/random/300*300';
-    return 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80';
   }
 }

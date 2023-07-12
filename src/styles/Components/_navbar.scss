@@ -1,0 +1,36 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  @include small-screen {
+    gap: 2px;
+  }
+}
+.navbar {
+  // background-color: $primary_color;
+  background-color: $white_color;
+  border-bottom: 3px $secondary_color solid;
+}
+.brand {
+  margin-top: 3px;
+  color: $primary_color;
+  text-decoration: none;
+  font-size: 20px;
+  @include small-screen {
+    display: none;
+  }
+}
+
+.form-select {
+  &:focus {
+    border: 2px solid $secondary_color !important;
+    box-shadow: none !important;
+  }
+}
+
+.nav-profile {
+  margin-top: 4px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}

@@ -1,0 +1,19 @@
+// bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// abstract
+@import "Abstract/variables";
+@import "Abstract/mixins";
+
+// base
+@import "base/reset";
+
+// components
+@import "components/btns";
+@import "components/navbar";
+@import "components/card";
+@import "components/loader";
+@import "components/comment";
+
+// layout
+@import "layout/layout";

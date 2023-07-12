@@ -1,20 +1,20 @@
-<!-- <p *ngFor="let post of posts">{{post.title}}</p> -->
+<div *ngIf="isLoading"><app-loading></app-loading></div>
+<div class="card-container" *ngIf="(!isLoading) && (posts.length<1) ">
+  <h1>Please Select user</h1>
+</div>
 <div class="card-container">
-
   <div *ngFor="let post of posts; let i = index">
-    <div class="card" style="width: 25rem;">
-      <!-- <img [src]="fetchImage()" class="card-img-top img" alt="..."> -->
+    <div class="card">
       <img src={{images[i]}} class="card-img-top img" alt="...">
       <div class="card-body">
-        <div class="title">
-
-          <img src={{images[i]}} class="card-img-top profile" alt="...">
-          <h5 class="card-title ">{{post.title | slice:0:30}}</h5>
+        <div class="title" *ngIf="posts.length>1">
+          <img src={{images[0]}} class=" profileImg" alt="...">
+          <h5 class="userName mt-1 ">{{users[post.userId-1].name}}</h5>
         </div>
-        <p class="card-text">{{post.body | slice:0:100}}</p>
-        <a href="#" class="btn btn-primary comment">Go somewhere</a>
-      </div>
-    </div>
-  </div>
 
-</div>
+        <h5 class="card-title text-center ">{{post.title | slice:0:30}}</h5>
+        <p class="card-text">{{post.body | slice:0:100}}</p>
+        <div class="comment">
+          <app-comments [images]="images" [modalId]=post.id></app-comments>
+        </div>
+        <div *ngIf="error">Error: {{ error }}</div>

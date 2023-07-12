@@ -1,0 +1,28 @@
+@mixin hover($background, $color: $white_color) {
+  color: $color;
+  background-color: $background;
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1.05);
+}
+
+$breakpoint-small: 480px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
+
+@mixin small-screen {
+  @media (max-width: $breakpoint-small) {
+    @content;
+  }
+}
+
+@mixin medium-screen {
+  @media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+    @content;
+  }
+}
+
+@mixin large-screen {
+  @media (min-width: $breakpoint-large) {
+    @content;
+  }
+}

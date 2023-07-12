@@ -1,0 +1,48 @@
+.card {
+  min-height: 540px;
+  transition: transform 0.3s ease-in-out;
+  width: 25rem;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    @include hover(transparent, $dark_color);
+  }
+
+  @include small-screen {
+    width: 21rem;
+  }
+
+  @include medium-screen {
+    width: 23rem;
+  }
+
+  @include large-screen {
+    width: 23rem;
+  }
+}
+
+.userName {
+  color: $primary_color;
+}
+
+.img {
+  height: 300px;
+  border-bottom: 3px #fca802 solid;
+}
+.title {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.profileImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+.comment {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 15px;
+}

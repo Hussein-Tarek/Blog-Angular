@@ -1,0 +1,20 @@
+.comment-profile {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  position: relative;
+  bottom: 5px;
+}
+.title {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.email {
+  color: $primary_color;
+}
+
+hr {
+  outline: 2px solid $primary_color;
+}

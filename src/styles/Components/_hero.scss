@@ -1,0 +1,26 @@
+.hero {
+  background-image: url("https://images.unsplash.com/photo-1635062038336-fb7cd81ae7e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bmF1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 34.8vh 0;
+  width: 100vw;
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  p {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+}

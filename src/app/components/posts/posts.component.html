@@ -1,22 +1,35 @@
 <div *ngIf="isLoading"><app-loading></app-loading></div>
 <div class="card-container" *ngIf="(!isLoading) && (posts.length<1) ">
-  <h1 class="mt-">Please Select user</h1>
-</div>
-<div class="card-container">
-  <div *ngFor="let post of posts; let i = index">
-    <div class="card">
-      <img src={{images[i]}} class="card-img-top img" alt="...">
-      <div class="card-body">
-        <div class="title" *ngIf="posts.length>1">
-          <img
-            src="https://media.istockphoto.com/id/1138920571/photo/portrait-of-modern-man-with-wireless-earbuds.jpg?s=612x612&w=0&k=20&c=g7mAKxy2X2Qkj9vtgQeYwOr3LHVBPdxwdylDgCO3sfQ="
-            class=" profileImg" alt="...">
-          <h5 class="userName mt-1 ">{{users[post.userId-1].name}}</h5>
+  <section class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 text">
+          <h1>Welcome to My Blog</h1>
+          <p>Please Select user to see posts</p>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <h5 class="card-title text-center ">{{post.title | slice:0:30}}</h5>
-        <p class="card-text">{{post.body | slice:0:100}}</p>
-        <div class="comment">
-          <app-comments [images]="images" [modalId]=post.id></app-comments>
+  <!-- <h1 class="mt-">Please Select user</h1> -->
+</div>
+<div *ngIf="(!isLoading) && (posts.length>0)" class="container my-5">
+  <div class="card-container ">
+    <div *ngFor="let post of posts; let i = index">
+      <div class="card">
+        <img src={{images[i]}} class="card-img-top img" alt="...">
+        <div class="card-body">
+          <div class="title" *ngIf="posts.length>1">
+            <img
+              src="https://media.istockphoto.com/id/1138920571/photo/portrait-of-modern-man-with-wireless-earbuds.jpg?s=612x612&w=0&k=20&c=g7mAKxy2X2Qkj9vtgQeYwOr3LHVBPdxwdylDgCO3sfQ="
+              class=" profileImg" alt="...">
+            <h5 class="userName mt-1 ">{{users[post.userId-1].name}}</h5>
+          </div>
+
+          <h5 class="card-title text-center ">{{post.title | slice:0:30}}</h5>
+          <p class="card-text">{{post.body | slice:0:100}}</p>
+          <div class="comment">
+            <app-comments [images]="images" [modalId]=post.id></app-comments>
+          </div>
+          <div *ngIf="error">Error: {{ error }}</div>
         </div>
-        <div *ngIf="error">Error: {{ error }}</div>

@@ -14,7 +14,6 @@ export class NavbarComponent implements OnInit {
   error: string = '';
   users: User[] = [];
   @Output() usersEvent = new EventEmitter();
-  @Output() ImageEvent = new EventEmitter();
   selectedUser: string = 'Select User';
   image =
     'https://media.istockphoto.com/id/1138920571/photo/portrait-of-modern-man-with-wireless-earbuds.jpg?s=612x612&w=0&k=20&c=g7mAKxy2X2Qkj9vtgQeYwOr3LHVBPdxwdylDgCO3sfQ=';
@@ -54,7 +53,6 @@ export class NavbarComponent implements OnInit {
   }
   onSelectionChange() {
     this.images = this.shuffleArray(this.images);
-    this.ImageEvent.emit(this.images);
     this.imageService.dataSubject.next(this.images);
     this.postService.getPostsById(this.selectedUser);
   }
